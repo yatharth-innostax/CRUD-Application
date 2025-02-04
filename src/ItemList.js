@@ -6,7 +6,7 @@ const ItemList = ({ items, deleteItem, editItem }) => {
       {items.map((item) => (
         <li key={item.id} className="flex justify-between items-center p-3 border-b last:border-b-0">
           <span className="text-gray-700">
-            <strong>{item.name}</strong> - {item.description}
+            <strong>{item.name}</strong> - {item.description} - {item.DOB}
           </span>
           <div>
             <button
