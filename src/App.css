@@ -1,28 +1,3 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f4f8; 
-  padding: 0 20px;
-}
+/* src/App.css */
 
-.App-logo {
-  height: 200px; 
-  animation: App-logo-spin infinite 20s linear;
-}
-
-.App-header {
-  font-size: 1.5rem;
-  margin: 20px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* This file can be kept empty now, as we will use tailwind classes for styling. You can add custom styles here later if needed. */
