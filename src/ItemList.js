@@ -2,11 +2,11 @@ import React from 'react';
 
 const ItemList = ({ items, deleteItem, editItem }) => {
   return (
-    <ul className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-4">
+    <ul className="max-w-md mx-auto bg-green-100 shadow-lg rounded-lg p-5">
       {items.map((item) => (
-        <li key={item.id} className="flex justify-between items-center p-3 border-b last:border-b-0">
+        <li key={item.id} className="flex justify-between items-center p-4 border-b border-gray-300 text-base text-gray-800 transition-all duration-300 hover:bg-gray-50">
           <span className="text-gray-700">
-            <strong>{item.name}</strong> - {item.description}
+            <strong>{item.name}</strong> - {item.description} - {item.DOB}
           </span>
           <div>
             <button
