@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { format } from 'date-fns'; 
 const ItemList = ({ items, deleteItem, editItem }) => {
   return (
     <ul className="max-w-md mx-auto bg-green-100 shadow-lg rounded-lg p-5">
       {items.map((item) => (
         <li key={item.id} className="flex justify-between items-center p-4 border-b border-gray-300 text-base text-gray-800 transition-all duration-300 hover:bg-gray-50">
           <span className="text-gray-700">
-            <strong>{item.name}</strong> - {item.description} - {item.DOB.toLocaleDateString()}
+            <strong>{item.name}</strong> - {item.description} - {format(new Date(item.DOB), 'dd/MM/yyyy')}
           </span>
           <div>
             <button
@@ -29,3 +29,4 @@ const ItemList = ({ items, deleteItem, editItem }) => {
 };
 
 export default ItemList;
+

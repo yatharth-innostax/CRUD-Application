@@ -8,6 +8,7 @@ const App = () => {
   const [editingItem, setEditingItem] = useState(null);
   const addItem = (item) => {
     setItems([...items, { ...item, id: Date.now()}]);
+    console.log("items===>",item)
   };
 
   const updateItem = (updatedItem) => {
