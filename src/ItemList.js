@@ -6,7 +6,7 @@ const ItemList = ({ items, deleteItem, editItem }) => {
       {items.map((item) => (
         <li key={item.id} className="flex justify-between items-center p-4 border-b border-gray-300 text-base text-gray-800 transition-all duration-300 hover:bg-gray-50">
           <span className="text-gray-700">
-            <strong>{item.name}</strong> - {item.description} - {item.DOB}
+            <strong>{item.name}</strong> - {item.description} - {item.DOB.toLocaleDateString()}
           </span>
           <div>
             <button

@@ -6,9 +6,8 @@ import './App.css';
 const App = () => {
   const [items, setItems] = useState([]);
   const [editingItem, setEditingItem] = useState(null);
-
   const addItem = (item) => {
-    setItems([...items, { ...item, id: Date.now() }]);
+    setItems([...items, { ...item, id: Date.now()}]);
   };
 
   const updateItem = (updatedItem) => {
