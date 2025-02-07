@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch } from 'react-redux';
-import { addItem as addItemAction, updateItem as updateItemAction } from './redux/itemsSlice';
+import { addItem as addItemAction, clearEditingItem, updateItem as updateItemAction } from './redux/itemsSlice';
 
 const ItemForm = ({ editingItem }) => {
     const [name, setName] = useState('');
@@ -28,6 +28,7 @@ const ItemForm = ({ editingItem }) => {
         const item = { name, description, DOB };
         if (editingItem) {
             dispatch(updateItemAction({ ...item, id: editingItem.id }));
+            dispatch(clearEditingItem());
         } else {
             dispatch(addItemAction(item));
         }
