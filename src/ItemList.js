@@ -1,6 +1,19 @@
 import React from 'react';
-import { format } from 'date-fns'; 
-const ItemList = ({ items, deleteItem, editItem }) => {
+import { useDispatch } from 'react-redux';
+import { deleteItem, setEditingItem } from './redux/itemsSlice';
+import { format } from 'date-fns';
+
+const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleEdit = (item) => {
+    dispatch(setEditingItem(item));
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteItem(id));
+  };
+
   return (
     <ul className="max-w-md mx-auto bg-green-100 shadow-lg rounded-lg p-5">
       {items.map((item) => (
@@ -10,13 +23,13 @@ const ItemList = ({ items, deleteItem, editItem }) => {
           </span>
           <div>
             <button
-              onClick={() => editItem(item)}
+              onClick={() => handleEdit(item)}
               className="px-3 py-1 text-sm font-semibold text-white bg-yellow-500 rounded-md hover:bg-yellow-600 mr-2 transition-all duration-300"
             >
               Edit
             </button>
             <button
-              onClick={() => deleteItem(item.id)}
+              onClick={() => handleDelete(item.id)}
               className="px-3 py-1 text-sm font-semibold text-white bg-red-500 rounded-md hover:bg-red-600 transition-all duration-300"
             >
               Delete
@@ -29,4 +42,3 @@ const ItemList = ({ items, deleteItem, editItem }) => {
 };
 
 export default ItemList;
-
