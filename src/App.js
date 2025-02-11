@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ItemList from './ItemList';
 import ItemForm from './ItemForm';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEditingItem, clearEditingItem } from './redux/itemsSlice';
 
 const App = () => {
-  const [items, setItems] = useState([]);
-  const [editingItem, setEditingItem] = useState(null);
+  const dispatch = useDispatch();
+  const items = useSelector(state => state.items.items); // Access items from Redux store
+  const editingItem = useSelector(state => state.items.editingItem); // Access editing item from Redux store
 
+  // Redux actions for adding, updating, deleting items
   const addItem = (item) => {
-    setItems([...items, { ...item, id: Date.now() }]);
+    dispatch(addItem(item));
   };
 
   const updateItem = (updatedItem) => {
-    setItems(items.map(item => item.id === updatedItem.id ? updatedItem : item));
-    setEditingItem(null);
+    dispatch(updateItem(updatedItem));
+    dispatch(clearEditingItem()); // Clear editing item after update
   };
 
   const deleteItem = (id) => {
-    setItems(items.filter(item => item.id !== id));
+    dispatch(deleteItem(id));
   };
 
   const editItem = (item) => {
-    setEditingItem(item);
+    dispatch(setEditingItem(item));
   };
 
   return (
@@ -36,3 +40,9 @@ const App = () => {
 };
 
 export default App;
+
+/* NOTE:
+useDispatch: Allows you to dispatch actions to the Redux store.
+useSelector: Allows you to access specific pieces of state from the Redux store.
+These hooks simplify the process of interacting with Redux in functional components,
+ providing a more React-friendly approach than the older connect HOC.*/
